@@ -11,7 +11,7 @@ You can affect the **accuracy** of the typewriting by specifying a floating poin
 The **natural** boolean property makes for a small amount of variance in the **speed** of the typing animation – this, hopefully, creates a slightly more realistic-looking effect.
 
 ### Usage
-See the **demo.html** for an example of setting up the plugin, but in short:
+See the demo at [http://sarith.github.io/jquery-typo/](http://sarith.github.io/jquery-typo/) for an example of setting up the plugin, but in short:
 
 	$("#element").typo({
 		speed: 150, // Speed in milliseconds
