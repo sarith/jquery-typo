@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Typo Demo</title>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.0.0/jquery.min.js"></script>
+		<script src="../dist/jquery.typo.js"></script>
+		<style type="text/css">
+			body {
+				background: #222;
+				color: #d9d9d9;
+				font-size: 24px;
+				font-family: 'Georgia', 'Times News Roman', serif;
+				letter-spacing: 1px;
+				position: relative;
+				width: 100%;
+				height: 100%;
+				text-align: left;
+				line-height: 32px;
+			}
+
+			#element {
+				margin: 200px;
+			}
+		</style>
+	</head>
+	<body>
+		<script>
+			$(function() {
+				$("#element").typo({
+					// Speed in milliseconds between each character
+					speed: 150,
+					// Cursor trailing the typing   
+					cursor: '_',
+					// natural (a boolean value) will introduce variance to the speed property, making for a slightly more natural-looking typing animation 
+					natural: true,
+					// 0.0 - 1.0 range of accuracy. 1.0 will never make mistakes, 0.0 will make mistakes on every character (likely will not get past the first character) 
+					accuracy: 0.7, 
+					callback: function(e) { // Callback function
+					 	$(e.element).css('color', 'cyan');
+					 	setTimeout(function() {
+					 		e.wipe(e.$element); // Convenience function for an animated erasure of the typed text
+					 	}, 3000);
+					}
+				});
+			});
+		</script>
+		<div id="element">The Old Man and the Sea is the story of a battle between an old, experienced fisherman and a large marlin. </div>
+	</body>
+</html>

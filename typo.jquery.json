@@ -1,0 +1,33 @@
+{
+	"name": "typo",
+	"title": "jQuery Typo",
+	"description": "A typewriter plugin with realistic typographical errors and natural typing cadence",
+	"keywords": [
+		"jquery",
+		"typewriter",
+		"typo",
+		"plugins"
+	],
+	"version": "0.1.0",
+	"author": {
+		"name": "Sarith Demuni",
+		"email": "sarith@nullandvoid.co",
+		"url": "https://github.com/sarith"
+	},
+	"maintainers": [
+		{
+			"name": "Sarith Demuni",
+			"email": "sarith@nullandvoid.co",
+			"url": "https://github.com/sarith"
+		}
+	],
+	"licenses": [
+		{
+			"type": "MIT",
+			"url": "http://sarith.mit-license.org/"
+		}
+	],
+	"dependencies": {
+		"jquery": ">=1.4"
+	}
+}
