@@ -2,7 +2,7 @@
 A simple jQuery plugin that helps to recreate a believable typewriting effect, complete with typographical errors and speed variance.
 
 ### Typos & Variance
-This very early version of the plug-in uses a basic multidimensional data structure for most of the typeable keys on a US QWERT-style keyboard layout. Adjacent keys are mapped to each character.
+This very early version of the plug-in uses a basic multidimensional data structure for most of the typeable keys on a US QWERTY-style keyboard layout. Adjacent keys are mapped to each character.
 
 #### Accuracy
 You can affect the **accuracy** of the typewriting by specifying a floating point value between 0.0 and 1.0.  1.0 will produce a 100% accurate typing animation (no mistakes), while 0.0 will make for a 0% success rate when trying to type out the text.
