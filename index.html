@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
+
+    <title>Jquery-typo by sarith</title>
+  </head>
+
+  <body>
+
+    <header>
+      <div class="container">
+        <h1>Jquery-typo</h1>
+        <h2>A simple jQuery plugin that helps to recreate a believable typewriting effect</h2>
+
+        <section id="downloads">
+          <a href="https://github.com/sarith/jquery-typo/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/sarith/jquery-typo/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/sarith/jquery-typo" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h3>
+<a name="typos--variance" class="anchor" href="#typos--variance"><span class="octicon octicon-link"></span></a>Typos &amp; Variance</h3>
+
+<p>This very early version of the plug-in uses a basic multidimensional data structure for most of the typeable keys on a US QWERTY-style keyboard layout. Adjacent keys are mapped to each character.</p>
+
+<h4>
+<a name="accuracy" class="anchor" href="#accuracy"><span class="octicon octicon-link"></span></a>Accuracy</h4>
+
+<p>You can affect the <strong>accuracy</strong> of the typewriting by specifying a floating point value between 0.0 and 1.0.  1.0 will produce a 100% accurate typing animation (no mistakes), while 0.0 will make for a 0% success rate when trying to type out the text.</p>
+
+<h4>
+<a name="speed" class="anchor" href="#speed"><span class="octicon octicon-link"></span></a>Speed</h4>
+
+<p>The <strong>natural</strong> boolean property makes for a small amount of variance in the <strong>speed</strong> of the typing animation – this, hopefully, creates a slightly more realistic-looking effect.</p>
+
+<h3>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<p>See the demo at <a href="http://sarith.github.io/jquery-typo/">http://sarith.github.io/jquery-typo/</a> for an example of setting up the plugin, but in short:</p>
+
+<pre><code>$("#element").typo({
+    speed: 150, // Speed in milliseconds
+    cursor: '_', // Cursor trailing the typing   
+    natural: true, // Natural-looking variance (or not) 
+    accuracy: 0.7, // 0.0 - 1.0 range of accuracy
+    callback: function(e) { // Callback function
+        $(e.element).css('color', 'cyan');
+        setTimeout(function() {
+            e.wipe(e.$element); // Animated erasure of text
+        }, 3000);
+});
+</code></pre>
+
+<h3>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h3>
+
+<p>MIT License: <a href="http://sarith.mit-license.org/">http://sarith.mit-license.org/</a></p>
+      </section>
+    </div>
+
+    
+  </body>
+</html>
