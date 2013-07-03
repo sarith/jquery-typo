@@ -6,6 +6,7 @@
 				cursor: '',
 				accuracy: 1.0,
 				natural: false,
+				keepCursor: false,
 				callback: function(){},
 				wipeCallback: function(){}
 			};
@@ -57,8 +58,15 @@
 						}
 
 					} else {
-						this.$element.html(this.finalText);
-						this.settings.callback(this);
+
+						if (this.settings.keepCursor) {
+							this.$element.html(this.finalText + this.settings.cursor);	
+						} else {
+							this.$element.html(this.finalText);
+						}
+						if (this.settings.callback !== undefined) {
+							this.settings.callback(this);
+						}
 					}
 
 				},
@@ -165,7 +173,9 @@
 						}, this.settings.speed);
 					} else {
 						$element.html("");
-						this.settings.wipeCallback(this);
+						if (this.settings.wipeCallback !== undefined) {
+							this.settings.wipeCallback(this);
+						}
 					}
 				},
 
