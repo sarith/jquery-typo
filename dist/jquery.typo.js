@@ -6,7 +6,8 @@
 				cursor: '',
 				accuracy: 1.0,
 				natural: false,
-				callback: function(){}
+				callback: function(){},
+				wipeCallback: function(){}
 			};
 
 		function Plugin ( element, options ) {
@@ -20,17 +21,16 @@
 
 		Plugin.prototype = {
 				init: function () {
-						console.log("xD");
 						this.$element = $(this.element);
-						this.finalText = this.$element.text();
-						this.$element.text("").show();
+						this.finalText = this.$element.html();
+						this.$element.html("").show();
 						this.typeNextCharacter(0);
 				},
 				
 				typeNextCharacter: function (i) {
 					if (this.finalText.length > i) {
 						
-						this.$element.text(this.$element.text().substr(0,i) + this.getNextCharacter(i) + this.settings.cursor);	
+						this.$element.html(this.$element.html().substr(0,i) + this.getNextCharacter(i) + this.settings.cursor);	
 						
 						var delay;
 						if (this.settings.natural) {
@@ -40,11 +40,11 @@
 						}
 
 						var self = this;
-						if (self.$element.text() != self.finalText.substr(0, i+1) + self.settings.cursor) {
+						if (self.$element.html() != self.finalText.substr(0, i+1) + self.settings.cursor) {
 							setTimeout(function () {
-								self.$element.text( self.$element.text().substr(0, i) + self.settings.cursor );
+								self.$element.html( self.$element.html().substr(0, i) + self.settings.cursor );
 								setTimeout(function () {
-									self.$element.text( self.finalText.substr(0, i+1) + self.settings.cursor );
+									self.$element.html( self.finalText.substr(0, i+1) + self.settings.cursor );
 									setTimeout(function (argument) {
 										self.typeNextCharacter(i+1);	
 									}, delay);
@@ -57,7 +57,7 @@
 						}
 
 					} else {
-						this.$element.text(this.finalText);
+						this.$element.html(this.finalText);
 						this.settings.callback(this);
 					}
 
@@ -154,18 +154,37 @@
 					return weightedAlpha;
 				},
 
-				wipe: function ($element) {
-					var length = $element.text().length;
-					if (length > 0) {
+				wipe: function ($element, i) {
+					i = i || 1;
+					var length = $element.html().length;
+					if (length > 1) {
 						var self = this;
 						setTimeout(function() {
-							$element.text( $element.text().substr(0, length-1) );
-							self.wipe($element);
+							$element.html( $element.html().substr(0, length-i) + self.settings.cursor);
+							self.wipe($element, i+1);
 						}, this.settings.speed);
 					} else {
-						$element.text("");
+						$element.html("");
+						this.settings.wipeCallback(this);
 					}
-				}
+				},
+
+				bind: function() {  },
+  
+				destroy: function() {
+					this.$element.unbind("destroyed", 
+						this.teardown);
+					this.teardown();
+				},
+
+				teardown: function() {
+					$.removeData(this.$element[0], this.name);
+					this.$element.removeClass(this.name);
+					this.unbind();
+					this.element = null;
+				},
+
+				unbind: function() {  }
 
 		};
 
