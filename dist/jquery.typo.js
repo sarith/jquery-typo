@@ -24,7 +24,7 @@
 				init: function () {
 						this.$element = $(this.element);
 						this.finalText = this.$element.html();
-						this.$element.html("").show();
+						this.$element.html("" + this.settings.cursor).show();
 						this.typeNextCharacter(0);
 				},
 				
@@ -185,10 +185,8 @@
 							self.wipe($element, i+1);
 						}, this.settings.speed);
 					} else {
-						$element.html("");
-						if (this.settings.wipeCallback !== undefined) {
-							this.settings.wipeCallback(this);
-						}
+						$element.html("" + (this.settings.keepCursor ? this.settings.cursor : ''));
+						if (this.settings.wipeCallback !== undefined) this.settings.wipeCallback(this);
 					}
 				},
 
