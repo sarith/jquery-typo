@@ -72,15 +72,19 @@
 				},
 
 				getNextCharacter: function (i) {
-					var currentChar = this.finalText.substr(i, 1);
+					var currentChar = this.finalText.substr(i, 1),
+						nextChar = currentChar;
+					
 					if (currentChar.toLowerCase() !== undefined) currentChar = currentChar.toLowerCase();
 
-					var nextChar = this.alphabet[currentChar][Math.floor(Math.random() * this.alphabet[currentChar].length)];
-					if (nextChar.toUpperCase() === this.finalText.substr(i, 1)) {
-						nextChar = nextChar.toUpperCase();
+					if (this.alphabet[currentChar]) {
+						nextChar = this.alphabet[currentChar][Math.floor(Math.random() * this.alphabet[currentChar].length)];
+						if (nextChar.toUpperCase() === this.finalText.substr(i, 1)) {
+							nextChar = nextChar.toUpperCase();
+						}
 					}
 
-					return (nextChar); 
+					return nextChar; 
 				},
 
 				createAlphabet: function () {
