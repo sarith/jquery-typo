@@ -7,8 +7,8 @@
 				accuracy: 1.0,
 				natural: false,
 				keepCursor: false,
-				callback: function(){},
-				wipeCallback: function(){}
+				callback: $.noop,
+				wipeCallback: $.noop
 			};
 
 		function Plugin ( element, options ) {
@@ -190,7 +190,7 @@
 					}
 				},
 
-				bind: function() {  },
+				bind: $.noop,
   
 				destroy: function() {
 					this.$element.unbind("destroyed", 
@@ -205,7 +205,7 @@
 					this.element = null;
 				},
 
-				unbind: function() {  }
+				unbind: $.noop
 
 		};
 
