@@ -23,15 +23,15 @@
 		Plugin.prototype = {
 				init: function () {
 						this.$element = $(this.element);
-						this.finalText = this.$element.html();
-						this.$element.html("" + this.settings.cursor).show();
+						this.finalText = this.$element.text();
+						this.$element.text("" + this.settings.cursor).show();
 						this.typeNextCharacter(0);
 				},
 				
 				typeNextCharacter: function (i) {
 					if (this.finalText.length > i) {
 						
-						this.$element.html(this.$element.html().substr(0,i) + this.getNextCharacter(i) + this.settings.cursor);	
+						this.$element.text(this.$element.text().substr(0,i) + this.getNextCharacter(i) + this.settings.cursor);	
 						
 						var delay;
 						if (this.settings.natural) {
@@ -41,11 +41,11 @@
 						}
 
 						var self = this;
-						if (self.$element.html() != self.finalText.substr(0, i+1) + self.settings.cursor) {
+						if (self.$element.text() != self.finalText.substr(0, i+1) + self.settings.cursor) {
 							setTimeout(function () {
-								self.$element.html( self.$element.html().substr(0, i) + self.settings.cursor );
+								self.$element.text( self.$element.text().substr(0, i) + self.settings.cursor );
 								setTimeout(function () {
-									self.$element.html( self.finalText.substr(0, i+1) + self.settings.cursor );
+									self.$element.text( self.finalText.substr(0, i+1) + self.settings.cursor );
 									setTimeout(function (argument) {
 										self.typeNextCharacter(i+1);	
 									}, delay);
@@ -60,9 +60,9 @@
 					} else {
 
 						if (this.settings.keepCursor) {
-							this.$element.html(this.finalText + this.settings.cursor);	
+							this.$element.text(this.finalText + this.settings.cursor);	
 						} else {
-							this.$element.html(this.finalText);
+							this.$element.text(this.finalText);
 						}
 						if (this.settings.callback !== undefined) {
 							this.settings.callback(this);
@@ -177,15 +177,15 @@
 
 				wipe: function ($element, i) {
 					i = i || 1;
-					var length = $element.html().length;
+					var length = $element.text().length;
 					if (length > 1) {
 						var self = this;
 						setTimeout(function() {
-							$element.html( $element.html().substr(0, length-i) + self.settings.cursor);
+							$element.text( $element.text().substr(0, length-i) + self.settings.cursor);
 							self.wipe($element, i+1);
 						}, this.settings.speed);
 					} else {
-						$element.html("" + (this.settings.keepCursor ? this.settings.cursor : ''));
+						$element.text("" + (this.settings.keepCursor ? this.settings.cursor : ''));
 						if (this.settings.wipeCallback !== undefined) this.settings.wipeCallback(this);
 					}
 				},
