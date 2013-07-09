@@ -73,8 +73,7 @@
 
 				getNextCharacter: function (i) {
 					var currentChar = this.finalText.substr(i, 1),
-						nextChar = currentChar;
-					
+						nextChar = currentChar;	
 					if (currentChar.toLowerCase() !== undefined) currentChar = currentChar.toLowerCase();
 
 					if (this.alphabet[currentChar]) {
