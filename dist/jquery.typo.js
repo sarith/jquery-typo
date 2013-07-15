@@ -27,12 +27,11 @@
 						this.$element.html("" + this.settings.cursor).show();
 						this.typeNextCharacter(0);
 				},
-				
+
 				typeNextCharacter: function (i) {
 					if (this.finalText.length > i) {
-						
-						this.$element.html(this.$element.text().substr(0,i) + this.getNextCharacter(i) + this.settings.cursor);	
-						
+
+						this.$element.html(this.$element.text().substr(0,i) + this.getNextCharacter(i) + this.settings.cursor);
 						var delay;
 						if (this.settings.natural) {
 							delay = Math.random() * this.settings.speed * 1.5 + (this.settings.speed/2);
@@ -47,7 +46,7 @@
 								setTimeout(function () {
 									self.$element.html( self.finalText.substr(0, i+1) + self.settings.cursor );
 									setTimeout(function (argument) {
-										self.typeNextCharacter(i+1);	
+										self.typeNextCharacter(i+1);
 									}, delay);
 								}, delay);
 							}, delay);
@@ -60,7 +59,7 @@
 					} else {
 
 						if (this.settings.keepCursor) {
-							this.$element.html(this.finalText + this.settings.cursor);	
+							this.$element.html(this.finalText + this.settings.cursor);
 						} else {
 							this.$element.html(this.finalText);
 						}
@@ -73,7 +72,7 @@
 
 				getNextCharacter: function (i) {
 					var currentChar = this.finalText.substr(i, 1),
-						nextChar = currentChar;	
+						nextChar = currentChar;
 					if (currentChar.toLowerCase() !== undefined) currentChar = currentChar.toLowerCase();
 
 					if (this.alphabet[currentChar]) {
@@ -83,7 +82,7 @@
 						}
 					}
 
-					return nextChar; 
+					return nextChar;
 				},
 
 				createAlphabet: function () {
@@ -121,7 +120,7 @@
 					alpha['m'] = ['m','n',',','k','j'];
 					alpha[','] = [',','.','m','l','k'];
 					alpha['.'] = ['.',',','/',';','l'];
-					
+
 					alpha['1'] = ['1','2','q','`'];
 					alpha['2'] = ['2','1','3','w','q'];
 					alpha['3'] = ['3','2','4','w','e'];
@@ -154,17 +153,17 @@
 					// Generate weights based on accuracy
 					var weights = {};
 					var weightedAlpha = {};
-					
-					for (i in alpha) {
+
+					for (var i in alpha) {
 						if (alpha.hasOwnProperty(i)) {
 							weightedAlpha[i] = [];
-							for (j in alpha[i]) {
+							for (var j in alpha[i]) {
 								if (alpha[i].hasOwnProperty(j)) {
-									weights[i] = {};		
+									weights[i] = {};
 									if (alpha[i][j] === alpha[i][0]) {
 										weights[i][j] = this.settings.accuracy;
 									} else {
-										 weights[i][j] = (1.0 - this.settings.accuracy) / (Object.keys(alpha[i]).length-1);
+										weights[i][j] = (1.0 - this.settings.accuracy) / (Object.keys(alpha[i]).length-1);
 									}
 									for (var k=0; k<weights[i][j]*100; k++) {
 										weightedAlpha[i].push(alpha[i][j]);
@@ -194,9 +193,9 @@
 				},
 
 				bind: $.noop,
-  
+
 				destroy: function() {
-					this.$element.unbind("destroyed", 
+					this.$element.unbind("destroyed",
 						this.teardown);
 					this.teardown();
 				},
@@ -212,7 +211,7 @@
 
 		};
 
-		
+
 		// Plug-in wrapper (preventing multiple instantiations)
 		$.fn[ pluginName ] = function ( options ) {
 				return this.each(function() {
