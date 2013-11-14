@@ -1,6 +1,8 @@
 # jQuery Typo
 A simple jQuery plugin that helps to recreate a believable typewriting effect, complete with typographical errors and speed variance.
 
+Project page: [http://sarith.github.io/jquery-typo/](http://sarith.github.io/jquery-typo/)
+
 ### Typos & Variance
 This very early version of the plug-in uses a basic multidimensional data structure for most of the typeable keys on a US QWERTY-style keyboard layout. Adjacent keys are mapped to each character.
 
