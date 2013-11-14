@@ -13,6 +13,7 @@ The **natural** boolean property makes for a small amount of variance in the **s
 ### Usage
 See the demo at [http://sarith.github.io/jquery-typo/demo](http://sarith.github.io/jquery-typo/demo) for an example of setting up the plugin, but in short:
 
+```javascript
 	$("#element").typo({
 		speed: 150, // Speed in milliseconds
 		cursor: '_', // Cursor trailing the typing   
@@ -24,6 +25,7 @@ See the demo at [http://sarith.github.io/jquery-typo/demo](http://sarith.github.
 				e.wipe(e.$element); // Animated erasure of text
 			}, 3000);
 	});
+```
 
 ### License
 MIT License: [http://sarith.mit-license.org/](http://sarith.mit-license.org/)
